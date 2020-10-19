@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Layout from "../views/Layout.vue";
 
 Vue.use(VueRouter);
 
@@ -18,6 +19,26 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
+  },
+  {
+    path: "/layout",
+    name: "Layout",
+    component: Layout
+  },
+  {
+    path: "/someicon",
+    name: "Icon",
+    component: () => import("../views/CommonIcon.vue")
+  },
+  {
+    path: "/select",
+    name: "Form",
+    component: () => import("../views/MyForm.vue")
+  },
+  {
+    path: "/table",
+    name: "Form",
+    component: () => import("../views/Table.vue")
   }
 ];
 
