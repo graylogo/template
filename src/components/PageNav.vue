@@ -39,7 +39,7 @@
       </el-submenu>
       <el-menu-item index="3" disabled>消息中心</el-menu-item>
       <el-menu-item index="4">
-        <router-link to="/">其它选项</router-link>
+        <router-link to="/vuex">其它选项</router-link>
       </el-menu-item>
     </el-menu>
   </div>

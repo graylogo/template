@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 id="title">qqqq</h1>
+<script>
+    const book = {
+        title: 'aaa',
+        price: '123',
+        dis: null,
+    }
+    // 判断对象中 某个属性的长度，  需要考虑属性不存在的情况，所以用 const len = book && book.price && book.price.length 来判断最为保险
+    const len = book && book.price && book.price.length
+    // let len = undefined
+    // if(book.price){
+    //     len = book.price.length
+    // }
+    //     console.log(len)
+    const h1 = document.getElementById('title')
+    h1.onclick = (e)=>{
+        console.log(e)
+        alert(e)
+    }
+    console.log(h1.innerText)
+
+    class annimal {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+        toString(){
+            return '('+ this.x + this.y + ')'
+        }
+    }
+    const cat = new annimal(1,2)
+    console.log(cat.toString())
+</script>
+</body>
+</html>

@@ -37,8 +37,13 @@ const routes = [
   },
   {
     path: "/table",
-    name: "Form",
+    name: "Table",
     component: () => import("../views/Table.vue")
+  },
+  {
+    path: "/vuex",
+    name: "vuex",
+    component: () => import("../views/Vuex.vue")
   }
 ];
 
