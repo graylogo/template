@@ -1,5 +1,7 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    严金刚的修改
+  </div>
 </template>
 
 <script>
