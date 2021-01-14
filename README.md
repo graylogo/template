@@ -3,3 +3,11 @@
 3. vue3
 4. 其他
 5. git多用户合作
+ES6
+README.md
+babel.config.js
+node_modules
+package-lock.json
+package.json
+public
+src
