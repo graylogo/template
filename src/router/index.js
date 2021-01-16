@@ -39,6 +39,11 @@ const routes = [
     path: "/table",
     name: "Form",
     component: () => import("../views/Table.vue")
+  },
+  {
+    path: "/completeTable",
+    name: "mytable",
+    component: () => import("../views/table/index.vue")
   }
 ];
 
