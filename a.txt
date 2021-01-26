@@ -1,10 +1,2 @@
-total 1064
-drwxr-xr-x    4 gray  staff   128B 12 24 16:10 ES6
--rw-r--r--    1 gray  staff   165B 12 24 16:39 README.md
--rw-r--r--    1 gray  staff     0B 12 24 16:44 a.txt
--rw-r--r--    1 gray  staff    66B 10 19 11:07 babel.config.js
-drwxr-xr-x  875 gray  staff    27K 11 24 09:27 node_modules
--rw-r--r--    1 gray  staff   520K 12 24 16:10 package-lock.json
--rw-r--r--    1 gray  staff   1.3K 12 24 16:10 package.json
-drwxr-xr-x    5 gray  staff   160B 12 24 16:10 public
-drwxr-xr-x   12 gray  staff   384B 12 24 16:10 src
+在分支上修改
+在分支上再次修改

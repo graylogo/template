@@ -1,12 +1,12 @@
 <template>
   <div class="pageNav">
-    <div class="line"></div>
+    <!-- <div class="line"></div> -->
     <el-menu
       :default-active="activeIndex"
       class="el-menu-demo"
       mode="horizontal"
       @select="handleSelect"
-      background-color="#545c64"
+      background-color="#009688"
       text-color="#fff"
       active-text-color="#ffd04b"
     >
@@ -39,7 +39,10 @@
       </el-submenu>
       <el-menu-item index="3" disabled>消息中心</el-menu-item>
       <el-menu-item index="4">
-        <router-link to="/vuex">其它选项</router-link>
+        <router-link to="/completeTable">表格</router-link>
+      </el-menu-item>
+      <el-menu-item index="5">
+        <router-link to="/">其它选项</router-link>
       </el-menu-item>
     </el-menu>
   </div>
