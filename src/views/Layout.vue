@@ -44,11 +44,42 @@
       ></el-col>
     </el-row>
     <el-divider></el-divider>
+    <el-color-picker v-model="color" disabled></el-color-picker>
+    <el-color-picker v-model="color" size="medium"></el-color-picker>
+    <el-color-picker v-model="color" size="small"></el-color-picker>
+    <el-color-picker v-model="color" size="mini"></el-color-picker>
+    <div :style="{ backgroundColor: color }" class="littel-box"></div>
+    <el-divider></el-divider>
+    <el-button @click="clickBtn">弹框</el-button>
   </div>
 </template>
 <script>
 export default {
-  name: "layout"
+  name: "layout",
+  data() {
+    return {
+      color: "red"
+    };
+  },
+  methods: {
+    clickBtn() {
+      const message = "1,2,3,";
+      this.$prompt(
+        `以下Wafer已进行外延判定，无法修改目检，请先撤销计算再进行修改确认`,
+        "提示",
+        {
+          inputValue: message.substring(0, message.length - 1),
+          confirmButtonText: "确定",
+          showCancelButton: false,
+          closeOnClickModal: false,
+          type: "warning",
+          inputType: "textarea"
+        }
+      ).then(() => {
+        return;
+      });
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -57,6 +88,10 @@ export default {
   &:last-child {
     margin-bottom: 0;
   }
+}
+.littel-box {
+  width: 30px;
+  height: 30px;
 }
 .el-col {
   border-radius: 4px;
