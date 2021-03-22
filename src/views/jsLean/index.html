@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JsLean</title>
+</head>
+<body>
+</body>
+    <script src="https://cdn.bootcss.com/decimal.js/10.2.0/decimal.min.js"></script>
+    <script>
+        // "use strict"   // 严格模式
+        // 变量
+        // console.log(a)  // undefined  变量的声明提升
+        // var a = '111'
+
+        // function param(){
+        //     if(false){
+        //         var b = '123'
+        //     }
+        //     console.log(b)
+        // }
+        // param()   // undefined  同样声提升了，虽然没执行，但是解析的时候还是解析了  var b 这个语句,只不过没有执行赋值语句
+
+        // let  和 const   产生临时死区，必须先声明再使用，否则回报错
+
+        // console.log(c);
+        // let c = '321'   // 报错了
+
+        // 块级作用域
+        // var 没有块级作用域
+        //  使用 let  const 声明的变量具有块级作用域
+        // TDZ 又称暂时性死区，指变量在作用域内已经存在，但必须在let/const声明后才可以使用。
+ 
+    // 相同点
+        // var/let/const共同点是全局作用域中定义的变量，可以在函数中使用
+        // 函数中声明的变量，只能在函数及其子函数中使用
+        // 函数中声明的变量就像声明了私有领地，外部无法访问
+    // 不同点
+    // 使用 var 声明的变量存在于最近的函数或全局作用域中，没有块级作用域的机制。
+
+    // 没有块作用域很容易污染全局，下面函数中的变量污染了全局环境
+        // function run() {
+        //     web = "xxx";
+        // }
+        // run();
+        // console.log(web); //xxx
+        // // 没有块作用作用域时var也会污染全局
+        // for (var i = 0; i < 10; i++) {
+        // console.log(i+'内部');
+        // }
+        // console.log(i);
+      //使用let则不会污染全局
+
+
+  //let
+    //与 var 声明的区别是 let/const 拥有块作用域，下面代码演示了块外部是无法访问到let声明的变量。
+    // 建议将let在代码块前声明
+    // 用逗号分隔定义多个
+    // let存在块作用域特性，变量只在块域中有效
+    // 每一层都是独立作用域，里层作用域可以声明外层作用域同名变量，但不会改变外层变量
+// const
+    // 使用 const 用来声明常量，这与其他语言差别不大，比如可以用来声明后台接口的URI地址。
+    // 常量名建议全部大写
+    // 只能声明一次变量
+    // 声明时必须同时赋值
+    // 不允许再次全新赋值
+    // 可以修改引用类型变量的值
+    // 拥有块、函数、全局作用域
+
+    // let 全局声明的变量不存在于 window对象中，这与var声明不同
+    //var 全局声明的变量也存在于 window对象中
+    // var hd = "xxx";
+    // console.log(window.hd); //xxx
+        
+    // Object.freeze
+    // 如果冻结变量后，变量也不可以修改了，使用严格模式会报出错误。
+        // "use strict"
+        // let INFO = {
+        // url: 'https://www.houdunren.com',
+        // port: '8080'
+        // };
+        // Object.freeze(INFO);
+        // INFO.port = '443'; //Cannot assign to read only property
+        // console.log(INFO);
+
+        // 前置运算符，先运算，再使用
+        // let n =1
+        // let f = 10 + n++
+        // console.log(f,n)
+
+            // 输出表格
+        // let n =1
+        // let f = 10 + ++n
+        // console.log(f,n)
+
+        // let row = 5;
+        // document.write(`<table border="1" width="100">`);
+        // while (row-- != 0) {
+        // document.write(`<tr><td>${row}</td></tr>`);
+        // }
+        // document.write(`</table>`);
+
+            // 输出三角
+        // function hd(row = 5) {
+        // let start = 0;
+        // do {
+        // let n = 0;
+        // do {
+        //     document.write('^');
+        //     } while (++n <= start);
+        // document.write("<br/>");
+        // } while (++start <= row);
+        // }
+        // hd(10);
+
+
+        // 杨辉三角
+    // function yang(row = 5){
+    //     for (let i = 1; i <= row; i++) {
+    //         for (let n = row - i; n > 0; n--) {
+    //             document.write('&nbsp');
+    //         }
+    //         for (let m = i * 2 - 1; m > 0; m--) {
+    //             document.write('*');
+    //         }
+    //     document.write("<br/>");
+    //     }
+    // }
+    // yang(10)
+
+        // label  指定循环跳转
+// houdunren: for (let i = 1; i <= 10; i++) {
+//         hdcms: for (let n = 1; n <= 10; n++) {
+//         if (n % 2 != 0) {
+//         continue hdcms;
+//         }
+//         console.log(i, n);
+//         if (i + n > 15) {
+//         break houdunren;
+//         }
+//     }
+// }
+
+// const hd = ["hdcms", "houdunren"];
+// // 迭代特性遍历数组
+// // 这里还没搞懂
+// console.log(hd,hd.entries());
+// for (const [key, value] of hd.entries()) {
+//   console.log(key, value); //这样就可以遍历了
+// }
+// for(let item of hd){
+//     console.log(item)
+// }
+// for(let item in hd){
+//     console.log(item)
+// }
+
+// let lesson = 'css';
+// let web = '后盾人';
+// tag `访问${web}学习${lesson}前端知识`;
+
+// function tag(strings, ...values) {
+//     console.log(strings); //["访问", "学习", "前端知识"]
+//     console.log(values,'bbs'); // ["后盾人", "css"]
+// }
+
+// let lessons = [
+//   { title: "后盾人媒体查询响应式布局", author: "后盾人向军" },
+//   { title: "FLEX 弹性盒模型", author: "后盾人" },
+//   { title: "GRID 栅格系统后盾人教程", author: "古老师" }
+// ];
+// function links(strings, ...vars) {
+//   return strings
+//     .map((str, key) => {
+//       return (
+//         str +
+//         (vars[key]
+//           ? vars[key].replace(
+//               "后盾人",
+//               `<a href="https://www.houdunren.com">后盾人</a>`
+//             )
+//           : "")
+//       ); 
+//     })
+//     .join("");
+// }
+
+// function template() {
+//   return `<ul>
+//     ${lessons
+//       .map(item => links`<li>${item.author}:${item.title}</li>`)
+//       .join("")}
+// </ul>`;
+// }
+// document.body.innerHTML += template();
+const str = '1.2abcdefa1g'
+// console.log('abc'.toUpperCase())
+// console.log('AbV'.toLowerCase());
+// console.log('        aBc  av         '.trim());
+// console.log('aavc'[0])
+// console.log(str.slice(0,1));
+// console.log(str.slice(-2));
+// console.log(str.slice(-2,-1),'aaa');
+// console.log(str.substr(0,3));
+// console.log(str.substring(0,1))
+// console.log(str.indexOf('a'));
+// console.log(str.lastIndexOf('a'));
+// console.log(str.search('a'));
+// console.log(str.includes('a'));
+// console.log(str.startsWith('b',1));
+// console.log(str.replace('a','v'));  // 默认只替换第一个
+
+// console.log(str.repeat(3));  //重复生成3次
+// console.log(str.slice(0,-4)+" * ".repeat(4)); // 模糊后四位
+
+// console.log(str.split(''));
+// let obj = {}  // 空的对象强制转换为Boolean后仍然是true
+// if(obj){
+//     console.log('aaaa');
+// }
+// if (arr) console.log("true");   // 空的引用类型都是true
+// console.log(!![]) //显式转换
+
+// 很好的while循环例子
+// while (true) {
+//   let n = prompt("请输入后盾人成立年份").trim();
+//   if (!n) continue;
+//   alert(n == 2010 ? "回答正确" : "答案错误！看看官网了解下");
+//   break;
+// }
+
+// let num = new Number(10.110);
+// console.log(Number.isInteger(num));
+// console.log(num+1);
+// console.log(num.toFixed(2));
+// console.log(parseInt(str));
+// console.log(parseFloat(str));
+// console.log(0.1+0.2);   // js进度问题导致bug
+// console.log((0.1).toString(16));
+// console.log(Decimal.add(0.1, 0.2).valueOf()) // 使用第三方库来实现 
+
+// console.log(Math.floor(Math.random()*10+1)); // 1~10之间的随机数  包括1和10
+// let arr = ['1',2,'aaa','wang']
+// let arr2 = ['1',2,'aaa','wang']
+// let now = new Date()
+// console.log(now*1);  // 获取时间戳
+// console.log(now.getMinutes());
+
+// const start = Date.now();
+// for (let i = 0; i < 20000000; i++) {}
+// const end = Date.now();
+// console.log(end - start);
+// console.log(new Date('2012'));
+// console.log(...arr);
+
+// function dateFormat(date, format = "YYYY-MM-DD HH:mm:ss") {
+//   const config = {
+//     YYYY: date.getFullYear(),
+//     MM: date.getMonth() + 1,
+//     DD: date.getDate(),
+//     HH: date.getHours(),
+//     mm: date.getMinutes(),
+//     ss: date.getSeconds()
+//   };
+//   for (const key in config) {
+//     format = format.replace(key, config[key]);
+//   }
+//   return format;
+// }
+// console.log(dateFormat(new Date(), "YYYY年MM月DD日"));
+
+// console.log(arr.concat(arr2));
+// console.log(arr.toString());
+// function hd() {
+// 	return ['houdunren', ,'other'];
+// }
+// let [a, b='aaa',...c] = hd();
+// console.log(a,b,c); //houdunren aaa ["other"]
+
+// const hd = ['houdunren', 'hdcms'];
+// const iterator = hd.entries();
+// console.log(iterator.next().valueOf()); //value:{0:0,1:'houdunren'}
+// console.log(iterator.next()); //value:{0:1,1:'hdcms'}
+// for (const [key, value] of hd.entries()) {
+//   console.log(key, value); //这样就可以遍历了
+// }
+// let m = new Map([
+//   [{a: 'ne'}, '后盾人'],
+//   ['hdcms', '开源系统']
+// ]);
+
+
+// (function(){
+//     console.log('aaa');
+// })();
+
+// function User(name) {
+//   this.name = name;
+// }
+
+// let hdcms = {};
+// User.call(hdcms, "HDCMS");
+
+
+
+// console.log(hdcms.name); //HDCMS
+
+
+// let a = function() {};
+// let b = a;
+// console.log(a === b); //true
+// //bind是新复制函数
+// let c = a.bind();
+// console.log(c); //false
+
+// let hd = {};
+// let houdunren = new Object();
+// console.log(hd, houdunren);
+// console.log(hd.constructor);
+// console.log(houdunren.constructor);
+
+// delete hd.name
+
+// function hd() {
+//   return {
+//     name: '后盾人',
+//     url: 'houdunren.com'
+//   };
+// }
+// let {url} = hd();
+// console.log(url);
+
+// "use strict";
+// function hd({ name, age }) {
+//   console.log(name, age); //向军大叔 18
+// }
+// hd({ name: "向军", age: 18 });
+
+let arr = ["后盾人"];
+console.log(arr);
+console.log(arr.hasOwnProperty("length")); //true   hasOwnProperty检测对象自身是否包含指定的属性，不检测原型链上继承的属性。
+console.log(arr.hasOwnProperty("concat")); //false
+console.log("concat" in arr); //true   使用 in 可以在原型对象上检测
+
+let obj = {name: "后盾人"};
+let hd = {
+  web: "houdunren.com"
+};
+
+//设置hd为obj的新原型
+Object.setPrototypeOf(obj, hd);
+console.log(obj);
+console.log(obj.web);
+console.log("web" in obj); //true
+console.log(obj.hasOwnProperty("web")); //false
+
+const name = Object.getOwnPropertyNames(obj)
+console.log(name);
+</script>
+</html>

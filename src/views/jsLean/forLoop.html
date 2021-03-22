@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for循环</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background:red;
+            margin: 10px;
+            cursor: pointer;
+            float: left;
+        }
+        .active{
+            border: black 5px solid;
+        }
+    </style>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        // querySelectorAll 选取所有的元素
+        var div = document.querySelector('div')
+        var divs = document.querySelectorAll('div')
+        // console.log(divs)
+        // divs[0].onclick = function(){
+        //     divs[0].style.background = 'yellow'
+        // }
+        // divs[1].onclick = ()=>divs[1].style.background = 'pink'
+        // const color = ['red','pink','black','purple','yellow']
+        // console.log(Math.floor((Math.random())*4+1))  // 随机数的使用
+        // for (let i = 0; i < divs.length; i++) {
+        //         divs[i].onclick = ()=>divs[i].style.background = color[Math.floor((Math.random())*5+1)]
+        //     }
+
+        // for初始值定义的时候使用let和var的区别
+        // for (var i = 0; i < divs.length; i++) {
+        //     // this.onclick = ()=>{
+        //     //     console.log(i)
+        //     // }
+        //     divs[i].onclick = function(){
+        //         // 使用var定义的时候，i执行完了是3
+        //         // 使用let定义的时候， i 是点击的元素的下标
+        //         console.log(i,'aaaa')
+        //     }
+        // }
+
+        // 普通函数和箭头函数中的this
+        // for (let i = 0; i < divs.length; i++) {
+        //     divs[i].onclick = function(){
+        //         // 普通函数中的this指向点击的哪个元素
+        //         console.log(this)
+        //         this.style.background = 'pink'
+        //     }
+        // }
+        // for (var i = 0; i < divs.length; i++) {
+        //     divs[i].onclick = ()=>{
+        //         // 箭头函数中的this指向window
+        //         console.log(this)
+        //         // this.style.background = 'pink'  // 报错，因为this指向window
+        //     }
+        // }
+
+        // 给标签增加属性
+        // divs[0].innerHTML = 'abc'  // 给标签增加自定义属性,在控制台元素检查中看不到，但是实际上是能打印出来的
+        // divs[0].className = 'abc'  // 给标签增加可见属性,  className比较特殊，因为class是保留字，所以使用className
+        // console.log(divs[0].className)
+            
+        // this的指向问题
+        // this在函数下，指的是调用在这个函数的  元素/对象！
+        // divs[0].onclick = abc
+        // function abc(){
+        //     console.log(this)
+        // }
+        // 直接调用，指向的就是window
+        // abc()
+
+        // classList的使用
+            // div.onclick= function(){
+            //     // div.classList.add('active')   
+            //     // div.classList.remove('active')
+            //     // div.classList.contains('active') // 判断是包含
+            //     div.classList.toggle('active') // 切换状态，有的话就移除，没有的话就加上
+            // }
+
+
+        // 乘法表
+        // var x = 1, y=1
+        // for(let y =1;y<10;y++){
+        //     for(let x =1;x<=y;x++){
+        //         console.log(x+'*'+y+'='+y*x)
+        //     }
+        // }
+
+       
+    </script>
+</body>
+</html>

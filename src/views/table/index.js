@@ -20,8 +20,22 @@ export default {
           name: "地址1",
           prop: "address"
         }
+      ],
+      tableHeader2: [
+        {
+          name: "1号"
+        },
+        {
+          name: "2号"
+        },
+        {
+          name: "3号"
+        }
       ]
     };
+  },
+  mounted() {
+    // console.log(this);
   },
   computed: {
     newTable() {
@@ -30,7 +44,8 @@ export default {
         arr.push({
           id: i.id,
           name: i.name,
-          value: i.address
+          value: i.address,
+          date: i.date
         });
       });
       return arr;

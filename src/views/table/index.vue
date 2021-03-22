@@ -42,7 +42,25 @@
     <el-divider></el-divider>
     <el-row :gutter="10">
       <el-col :span="10">
-        <h2>其它表格</h2>
+        <h2>优秀的竖向表格</h2>
+        <el-table :data="tableHeader" style="width: 100%">
+          <!-- 设置单独的第一列 -->
+          <el-table-column label="竖向标题" prop="name" fixed></el-table-column>
+          <el-table-column
+            v-for="(item, index) in tableHeader2"
+            :key="item.id"
+            :label="item.name"
+            show-overflow-tooltip
+          >
+            <template slot-scope="scope">
+              <span v-if="scope.$index === 0">{{ newTable[index].date }}</span>
+              <span v-if="scope.$index === 1">{{ newTable[index].name }}</span>
+              <span v-if="scope.$index === 2">
+                {{ newTable[index].value }}</span
+              >
+            </template>
+          </el-table-column>
+        </el-table>
       </el-col>
       <el-col :span="12">
         <h2>其它表格</h2>
