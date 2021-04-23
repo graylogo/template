@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <PageNav />
-    <el-divider></el-divider>
+    <el-divider />
     <router-view />
   </div>
 </template>
 
 <script>
-import PageNav from "./components/PageNav";
+import PageNav from './components/PageNav'
 export default {
-  name: "app",
+  name: 'App',
   components: {
     PageNav
   }
-};
+}
 </script>
 
 <style scoped>

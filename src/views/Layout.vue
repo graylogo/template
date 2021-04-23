@@ -1,86 +1,119 @@
 <template>
   <div>
     <el-row>
-      <el-col :span="24"
-        ><div class="grid-content bg-purple-dark"></div
-      ></el-col>
+      <el-col
+        :span="24"
+      >
+        <div class="grid-content bg-purple-dark" />
+      </el-col>
     </el-row>
     <el-row>
-      <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="12"
-        ><div class="grid-content bg-purple-light"></div
-      ></el-col>
+      <el-col :span="12">
+        <div class="grid-content bg-purple" />
+      </el-col>
+      <el-col
+        :span="12"
+      >
+        <div class="grid-content bg-purple-light" />
+      </el-col>
     </el-row>
     <el-row :gutter="10">
-      <el-col :span="7" :offset="1"
-        ><div class="grid-content bg-purple"></div
-      ></el-col>
-      <el-col :span="8"
-        ><div class="grid-content bg-purple-light"></div
-      ></el-col>
-      <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
+      <el-col
+        :span="7"
+        :offset="1"
+      >
+        <div class="grid-content bg-purple" />
+      </el-col>
+      <el-col
+        :span="8"
+      >
+        <div class="grid-content bg-purple-light" />
+      </el-col>
+      <el-col :span="8">
+        <div class="grid-content bg-purple" />
+      </el-col>
     </el-row>
     <el-row type="flex" justify="space-between">
-      <el-col :span="6"
-        ><div class="grid-content bg-purple-light"></div
-      ></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="6"
-        ><div class="grid-content bg-purple-light"></div
-      ></el-col>
+      <el-col
+        :span="6"
+      >
+        <div class="grid-content bg-purple-light" />
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content bg-purple" />
+      </el-col>
+      <el-col
+        :span="6"
+      >
+        <div class="grid-content bg-purple-light" />
+      </el-col>
     </el-row>
     <el-row :gutter="5">
-      <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="4"
-        ><div class="grid-content bg-purple-light"></div
-      ></el-col>
-      <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="4"
-        ><div class="grid-content bg-purple-light"></div
-      ></el-col>
-      <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="4"
-        ><div class="grid-content bg-purple-light"></div
-      ></el-col>
+      <el-col :span="4">
+        <div class="grid-content bg-purple" />
+      </el-col>
+      <el-col
+        :span="4"
+      >
+        <div class="grid-content bg-purple-light" />
+      </el-col>
+      <el-col :span="4">
+        <div class="grid-content bg-purple" />
+      </el-col>
+      <el-col
+        :span="4"
+      >
+        <div class="grid-content bg-purple-light" />
+      </el-col>
+      <el-col :span="4">
+        <div class="grid-content bg-purple" />
+      </el-col>
+      <el-col
+        :span="4"
+      >
+        <div class="grid-content bg-purple-light" />
+      </el-col>
     </el-row>
-    <el-divider></el-divider>
-    <el-color-picker v-model="color" disabled></el-color-picker>
-    <el-color-picker v-model="color" size="medium"></el-color-picker>
-    <el-color-picker v-model="color" size="small"></el-color-picker>
-    <el-color-picker v-model="color" size="mini"></el-color-picker>
-    <div :style="{ backgroundColor: color }" class="littel-box"></div>
-    <el-divider></el-divider>
-    <el-button @click="clickBtn">弹框</el-button>
+    <el-divider />
+    <el-color-picker v-model="color" disabled />
+    <el-color-picker v-model="color" size="medium" />
+    <el-color-picker v-model="color" size="small" />
+    <el-color-picker v-model="color" size="mini" />
+    <div :style="{ backgroundColor: color }" class="littel-box" />
+    <el-divider />
+    <el-button @click="clickBtn">
+      弹框
+    </el-button>
   </div>
 </template>
 <script>
 export default {
-  name: "layout",
+  name: 'Layout',
   data() {
     return {
-      color: "red"
-    };
+      color: 'red'
+    }
   },
   methods: {
     clickBtn() {
-      const message = "1,2,3,";
+      const message = '1,2,3,'
       this.$prompt(
         `以下Wafer已进行外延判定，无法修改目检，请先撤销计算再进行修改确认`,
-        "提示",
+        '提示',
         {
           inputValue: message.substring(0, message.length - 1),
-          confirmButtonText: "确定",
+          confirmButtonText: '确定',
           showCancelButton: false,
           closeOnClickModal: false,
-          type: "warning",
-          inputType: "textarea"
+          type: 'warning',
+          inputType: 'textarea'
         }
       ).then(() => {
-        return;
-      });
+        return
+      })
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .el-row {
