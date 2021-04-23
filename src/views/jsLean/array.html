@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const arr1 = [1,2,3,4]
+        // const arr2 = [1,2,5,6]
+        // 交集
+            // const com = arr1.filter(item=>arr2.indexOf(item)!== -1)
+            // console.log(com,'交集');
+        //交集 ES6
+            // const com = arr1.filter(item=>new Set(arr2).has(item))
+            // console.log(com,'交集');
+        //并集
+            // const sum = Array.from(new Set([...arr1,...arr2]))
+            // console.log(sum,'并集');
+        //差集  在arr1中而不在arr2中
+            // const sub = arr1.filter(item=>!new Set(arr2).has(item))
+            // console.log(sub,'差集');
+//  -------------------------------------------------------------------------
+let arr1 = [], arr2 = [];
+arr1 = [
+  {
+    ID: 1,
+    Name: 1,
+    desc: 'Number'
+  },
+  {
+    ID: 2,
+    Name: 2,
+    desc: 'Number'
+  },
+  {
+    ID: 3,
+    Name: 3,
+    desc: 'Number'
+  },
+  {
+    ID: 4,
+    Name: 4,
+    desc: 'Number'
+  },
+  {
+    ID: 5,
+    Name: 5,
+    desc: 'Number'
+  }
+]
+arr2 = [
+{
+    ID: 5,
+    Name: 5,
+    desc: 'Number'
+  },
+  {
+    ID: 6,
+    Name: 6,
+    desc: 'Number'
+  },
+  {
+    ID: 7,
+    Name: 7,
+    desc: 'Number'
+  },
+  {
+    ID: 8,
+    Name: 8,
+    desc: 'Number'
+  },
+  {
+    ID: 1,
+    Name: 1,
+    desc: 'Number'
+  }
+]
+     
+    // 交集
+    // const com = []
+    // for(let i of arr1){
+    //     for(let j of arr2){
+    //         if (i.ID === j.ID){
+    //             com.push(i)
+    //         }
+    //     }
+    // }
+    // console.log(com);
+//     const com = []
+//    for(let item of arr1){
+//        com.push(...arr2.filter(i=>i.ID === item.ID))
+//    }
+//     console.log(com);
+
+    // 并集
+// 方法一 去重
+    // 思想1: 根据对象的Key来判断
+    // const arr = [...arr1,...arr2]
+    // const sum = []
+    // const obj = {}
+    // for (let i = 0; i < arr.length; i++) {
+    //     if(!obj[arr[i].ID]){
+    //         sum.push(arr[i])
+    //         obj[arr[i].ID] = true
+    //     }
+        
+    // }
+
+            // // 简单的写法
+            // const sum = []
+            // const obj = {}
+            // for(let index in arr){
+            //     obj[arr[index].ID]? '':  obj[arr[index].ID] = true && sum.push(arr[index])
+            // }
+    // console.log(sum);
+
+    // 思想2   使用reduce   *******************
+    // const arr = [...arr1,...arr2]
+    // const obj = {}
+    // const sum = arr.reduce((pre,cur,index)=>{
+    //     obj[cur.ID]?true:obj[cur.ID] = true && pre.push(cur)
+    //     return pre
+    // },[])
+    // console.log(sum);
+//  **********************
+
+        // arr = [3,2,1]
+        // // for of 和  for in
+        // for(let item of arr){
+        //     console.log(item);
+        // }
+        // for(let index in arr){
+        //     console.log(index);
+        // }
+
+// 简单封装成函数
+        // function union(arr1,arr2,field){
+        //     const arr = arr1.concat(arr2)
+        //     const obj = {}
+        //     return arr.reduce((pre,cur)=>{
+        //         obj[cur[field]]?'':obj[cur[field]] = true && pre.push(cur)
+        //         return pre
+        //     },[])
+        // }
+        // const a = union(arr1,arr2,'ID')
+        // console.log(a);
+
+
+// 差集  arr1相对于arr2没有的
+// const sub = JSON.parse(JSON.stringify(arr1))
+// console.log(sub);
+// const arr = [...arr1,...arr2]
+// for(let index in arr1){
+//     for(j of arr2){
+//         if(arr1[index].ID === j.ID){
+//             sub.splice(index,1)
+//         }
+//     }
+// }
+// console.log(sub);
+
+
+
+
+
+
+    </script>
+</body>
+</html>
