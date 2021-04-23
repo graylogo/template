@@ -1,5 +1,5 @@
-const fs = require("fs");
+const fs = require('fs')
 
-fs.writeFile;
-fs.stat;
-fs.rename;
+fs.writeFile
+fs.stat
+fs.rename

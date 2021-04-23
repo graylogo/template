@@ -4,12 +4,12 @@
 module.exports = {
   configureWebpack: {
     devServer: {
-      port: 8888, //端口号
+      port: 8888, // 端口号
       open: true
-      //Mock数据
+      // Mock数据
       // before(app){
 
       // }
     }
   }
-};
+}

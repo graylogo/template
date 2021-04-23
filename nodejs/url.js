@@ -1,8 +1,8 @@
-const url = require("url");
+const url = require('url')
 
-let address = "http://www.brew.wamg?id=1&age=10";
+const address = 'http://www.brew.wamg?id=1&age=10'
 
-console.log(url.parse(address, true));
+console.log(url.parse(address, true))
 
 // 没有加true
 // Url {
