@@ -9,7 +9,17 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '/drag',
+        component: () => import('../views/Drag.vue')
+      },
+      {
+        path: '/tree',
+        component: () => import('../views/Tree.vue')
+      }
+    ]
   },
   {
     path: '/about',

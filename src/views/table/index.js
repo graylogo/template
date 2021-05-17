@@ -1,54 +1,54 @@
 export default {
-  name: "mytable",
+  name: 'mytable',
   data() {
     return {
-      name: "a",
+      name: 'a',
       tableData: [],
       tableHeader: [
         {
-          key: "12x",
-          name: "日期1",
-          prop: "name"
+          key: '12x',
+          name: '日期1',
+          prop: 'name'
         },
         {
-          key: "323dx",
-          name: "姓名1",
-          prop: "date"
+          key: '323dx',
+          name: '姓名1',
+          prop: 'date'
         },
         {
-          key: "dg3sx",
-          name: "地址1",
-          prop: "address"
+          key: 'dg3sx',
+          name: '地址1',
+          prop: 'address'
         }
       ],
       tableHeader2: [
         {
-          name: "1号"
+          name: '1号'
         },
         {
-          name: "2号"
+          name: '2号'
         },
         {
-          name: "3号"
+          name: '3号'
         }
       ]
-    };
+    }
   },
   mounted() {
     // console.log(this);
   },
   computed: {
     newTable() {
-      let arr = [];
+      const arr = []
       this.tableData.map(i => {
         arr.push({
           id: i.id,
           name: i.name,
           value: i.address,
           date: i.date
-        });
-      });
-      return arr;
+        })
+      })
+      return arr
       //   [
       //     {
       //       id: "wa",
@@ -70,12 +70,12 @@ export default {
   },
   created() {
     // 通过require来
-    this.tableData = require("@/date/new_table.json");
+    this.tableData = require('@/date/new_table.json')
     // console.log(JSON.stringify(this.tableData));
   },
   methods: {
     formatter(row) {
-      return row.address;
+      return row.address
     }
   }
-};
+}

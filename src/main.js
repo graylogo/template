@@ -8,6 +8,8 @@ import './plugins/element.js'
 import ElementUI from 'element-ui'
 import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/js/bootstrap.min'
 
 Vue.use(ElementUI)
 Vue.prototype.axios = axios
