@@ -72,6 +72,15 @@
           其它选项
         </router-link>
       </el-menu-item>
+      <el-menu-item
+        index="2-5"
+      >
+        <router-link to="/tableori">
+          <el-link type="primary">
+            原生表格
+          </el-link>
+        </router-link>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>

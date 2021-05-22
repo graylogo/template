@@ -51,6 +51,11 @@ const routes = [
     component: () => import('../views/Table.vue')
   },
   {
+    path: '/tableori',
+    name: 'tableOri',
+    component: () => import('../views/tableOri/index.vue')
+  },
+  {
     path: '/completeTable',
     name: 'mytable',
     component: () => import('../views/table/index.vue')

@@ -7,11 +7,16 @@ import './theme/index.css'
 import './plugins/element.js'
 import ElementUI from 'element-ui'
 import axios from 'axios'
+
+// 打印插件
+import Print from 'vue-print-nb'
 import 'element-ui/lib/theme-chalk/index.css'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 // import 'bootstrap/dist/js/bootstrap.min'
 
 Vue.use(ElementUI)
+Vue.use(Print)
+
 Vue.prototype.axios = axios
 Vue.config.productionTip = false
 
