@@ -3,7 +3,7 @@ export default {
   data() {
     return {
       name: 'a',
-      tableData: [],
+      tableDatas: [],
       selectedRow: [],
       pin: false,
       origin: -1,
@@ -74,7 +74,7 @@ export default {
   computed: {
     newTable() {
       const arr = []
-      this.tableData.map((i) => {
+      this.tableDatas.map((i) => {
         arr.push({
           id: i.id,
           name: i.name,
@@ -104,12 +104,13 @@ export default {
   },
   created() {
     // 通过require来
-    this.tableData = require('@/date/new_table.json')
-    this.tableData.forEach((item, index) => { item.index = index })
-    // console.log(JSON.stringify(this.tableData));
+    this.tableDatas = require('@/date/new_table.json')
+    this.tableDatas.forEach((item, index) => { item.index = index })
+    // console.log(JSON.stringify(this.tableDatas));
   },
   methods: {
     selectChange(data) {
+      console.log(data)
       this.selectedRow = data
     },
     // 这里是select事件开始
@@ -117,14 +118,13 @@ export default {
       const data = this.$refs.waferTable.tableData
       const origin = this.origin // 起点数 从-1开始
       const endIdx = row.index // 终点数
-      console.log(selection, data[origin], selection.includes(data[origin]))
       if (this.pin && selection.includes(data[origin])) { // 判断按住
         const sum = Math.abs(origin - endIdx) + 1// 这里记录终点
         const min = Math.min(origin, endIdx)// 这里记录起点
         let i = 0
         while (i < sum) {
           const index = min + i
-          this.$refs.waferTable.toggleRowSelection([data[index]], true) // 通过ref打点调用toggleRowSelection方法，第二个必须为true
+          this.$refs.waferTable.toggleRowSelection([{ row: data[index], selected: true }]) // 通过ref打点调用toggleRowSelection方法，第二个必须为true
           i++
         }
       } else {

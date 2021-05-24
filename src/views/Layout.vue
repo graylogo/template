@@ -84,6 +84,12 @@
     <el-button @click="clickBtn">
       弹框
     </el-button>
+    <el-divider />
+    <pre>{{ list }}</pre>
+    <el-button @click="start">
+      开始
+    </el-button>
+    <pre>{{ params }}</pre>
   </div>
 </template>
 <script>
@@ -91,10 +97,43 @@ export default {
   name: 'Layout',
   data() {
     return {
-      color: 'red'
+      color: 'red',
+      params: [],
+      list: [
+        { id: 1,
+          wafers: [
+            { id: 22, name: 22 }
+          ] },
+        { id: 2,
+          wafers: [
+            { id: 33, name: 33 },
+            { id: 44, name: 44 }
+          ] },
+        { id: 4,
+          wafers: [
+            { id: 66, name: 66 }
+          ] }
+      ],
+      len: 2
     }
   },
   methods: {
+    start() {
+      const res = { id: 55, name: 55 }
+      this.params = []
+      let position = 0
+      this.list.map((i, index) => {
+        if (i.wafers.length < this.len && !position) {
+          position = index * this.len + 1
+        }
+        this.params = [...this.params, ...i.wafers]
+      })
+      if (position) {
+        this.params.splice(position, 0, res)
+      } else {
+        this.params.push(res)
+      }
+    },
     clickBtn() {
       const message = '1,2,3,'
       this.$prompt(

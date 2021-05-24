@@ -59,6 +59,35 @@ const routes = [
     path: '/completeTable',
     name: 'mytable',
     component: () => import('../views/table/index.vue')
+  },
+  {
+    path: '/vuex',
+    name: 'vuex',
+    component: () => import('../views/Vuex.vue')
+  },
+  {
+    path: '/route',
+    name: 'route',
+    component: () => import('../views/Route.vue'),
+    children: [
+      {
+        path: '/user/:id',
+        name: 'user',
+        component: () => import('../views/routetest/User.vue')
+      },
+      {
+        path: '/product/:id',
+        name: 'product',
+        props: true,
+        component: () => import('../views/routetest/Product.vue')
+      },
+      {
+        path: '/others',
+        name: 'others',
+        props: true,
+        component: () => import('../views/routetest/Others.vue')
+      }
+    ]
   }
 ]
 
