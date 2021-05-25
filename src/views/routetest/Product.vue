@@ -13,7 +13,12 @@
 
 <script>
 export default {
-  props: ['userID'],
+  props: {
+    userID: {
+      type: [String, Number],
+      default: 0
+    }
+  },
   data() {
     return {
 

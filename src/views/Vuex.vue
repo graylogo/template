@@ -48,12 +48,6 @@ export default {
       intel: ''
     }
   },
-  mounted() {
-    this.intel = setInterval(this.changeTime, 100)
-  },
-  beforeDestroy() {
-    clearInterval(this.intel)
-  },
   computed: {
     // number(){
     //   return this.$store.state.number
@@ -71,6 +65,12 @@ export default {
     name() {
       console.log(this.name)
     }
+  },
+  mounted() {
+    this.intel = setInterval(this.changeTime, 100)
+  },
+  beforeDestroy() {
+    clearInterval(this.intel)
   },
   methods: {
     ...mapMutations({
