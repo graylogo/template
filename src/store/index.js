@@ -39,6 +39,7 @@ const store = new Vuex.Store({
       Vue.set(state.obj, 'age', '10')
     }
   },
+  // 类似计算属性  接收一个默认参数state
   getters: {
     // 第一种写法
     all(state) {
