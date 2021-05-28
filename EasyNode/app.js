@@ -42,12 +42,13 @@ const serveHandle = (req, res) => {
 
     //    TODO  处理统一的api版本
     // 处理blog  API
-    const blogData = handleBlog(req, res)
-    if (blogData) {
-      res.end(JSON.stringify(blogData))
+    const blogDataPromise = handleBlog(req, res)
+    if (blogDataPromise) {
+      blogDataPromise.then(blogData => {
+        res.end(JSON.stringify(blogData))
+      })
       return
     }
-
     // 处理404
     res.writeHeader(404, { 'Content-Type': 'application/json' })
     res.end(JSON.stringify({
