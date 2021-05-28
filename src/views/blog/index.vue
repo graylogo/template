@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="8">
         <el-timeline>
-          <el-timeline-item v-for="item of list" :key="item.id" :timestamp="item.update_date" placement="top">
+          <el-timeline-item v-for="item of list" :key="item.id" :timestamp="item.update_date | formateDate" placement="top">
             <el-card>
               <h3>标题: {{ item.title }}</h3>
               <h4>作者: {{ item.author }}</h4>
