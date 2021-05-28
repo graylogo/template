@@ -64,6 +64,9 @@
       <el-menu-item index="/route">
         路由
       </el-menu-item>
+      <el-menu-item index="/blog">
+        博客
+      </el-menu-item>
     </el-menu>
   </div>
 </template>

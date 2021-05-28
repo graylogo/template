@@ -111,6 +111,11 @@ const routes = [
       }
     ]
   },
+  {
+    path: '/blog',
+    name: 'blog',
+    component: () => import('../views/blog/index.vue')
+  },
   // 404页面
   {
     path: '*',

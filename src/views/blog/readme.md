@@ -1,0 +1,1 @@
+使用node实现的简单接口测试Promise
