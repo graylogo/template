@@ -8,8 +8,8 @@ const getPostData = (req) => {
       resolve({})
       return
     }
-    //  TODO application/x-www-form-urlencoded
-    if (req.headers['content-type'] !== 'application/json') {
+    //  兼容了使用axios.post()发送过来的post请求
+    if (req.headers['content-type'] !== 'application/json' && req.headers['content-type'] !== 'application/json;charset=UTF-8') {
       resolve({})
       return
     }
