@@ -6,7 +6,8 @@ import '../public/css/reset.css' // 样式初始化
 import './theme/index.css'
 import './plugins/element.js'
 import ElementUI from 'element-ui'
-import axios from 'axios'
+// import axios from 'axios'
+import axios from './utils/request'
 
 // 注册filter
 import filters from './utils/filter'
