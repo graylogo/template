@@ -135,12 +135,12 @@ export default {
       }
     },
     clickBtn() {
-      const message = '1,2,3,'
+      const message = [1, 2, 3]
       this.$prompt(
         `以下Wafer已进行外延判定，无法修改目检，请先撤销计算再进行修改确认`,
         '提示',
         {
-          inputValue: message.substring(0, message.length - 1),
+          inputValue: message.join('\n'),
           confirmButtonText: '确定',
           showCancelButton: false,
           closeOnClickModal: false,
@@ -148,7 +148,6 @@ export default {
           inputType: 'textarea'
         }
       ).then(() => {
-        return
       })
     }
   }

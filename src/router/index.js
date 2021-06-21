@@ -50,6 +50,11 @@ const routes = [
     component: () => import('../views/CommonIcon.vue')
   },
   {
+    path: '/vuetemp',
+    name: 'vuetemp',
+    component: () => import('../views/vueTemp/index.vue')
+  },
+  {
     path: '/select',
     name: 'Form',
     component: () => import('../views/MyForm.vue')

@@ -39,8 +39,7 @@ const serveHandle = (req, res) => {
   getPostData(req).then(postData => {
     // 将异步返回的postData放在req中，这样get请求也能使用这个数据了
     req.body = postData
-
-    //    TODO  处理统一的api版本
+    //  NOTE  处理统一的api版本
     // 处理blog  API
     const blogDataPromise = handleBlog(req, res)
     if (blogDataPromise) {

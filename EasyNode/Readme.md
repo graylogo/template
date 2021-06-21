@@ -5,6 +5,7 @@
 
  根据 [这个教程](https://www.bilibili.com/video/BV1KX4y1K7uz?p=16)来搭建的
 
+接口地址: localhost:8008
  ### 接口
  - **获取博客列表**
  > api/blog/list   
