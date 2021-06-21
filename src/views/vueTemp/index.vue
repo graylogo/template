@@ -82,6 +82,28 @@
 <script>
 import Vue from 'vue'
 export default {
+  // NOTE Vue中为什么data必须是函数？
+// 1. 一个组件的 data 选项必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝，如果是对象的话，会导致所有的组件维护同一个data，一个组件状态改变会导致另外组件也改变。
+// 2. js函数中，如果data是对象的话，指向的内存地址都是同一个
+// 而返回函数就不一样了，会创建不同的对象
+/*
+1. 都是同一个地址
+data:{
+    a:'xxx',
+}
+2. 这样也是同一个地址
+const obj = {a:'xxx'}
+data(){
+    retrun obj
+}
+3. 返回不同的地址，独立的data
+data(){   // 对象中函数的简单写法
+    return {
+        a: 'xxx'
+    }
+}
+*/
+
   data() {
     return {
       arr1: ['1', 2, { name: 1 }, null],

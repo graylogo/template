@@ -4,7 +4,7 @@ class BaseModel {
     // 做一个兼容
     if (typeof data === 'string') {
       this.message = data
-      // NOTE 这两行代码的意义
+      // TODO 这两行代码的意义
       data = null
       message = null
     }
