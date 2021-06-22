@@ -22,6 +22,7 @@
     <!-- <el-input v-model="inputVal" /> -->
     <div>拆分v-model</div>
     <el-input :value="inputVal" @input="inputIt" />
+    <input type="index" :value="inputVal" @input="inputOrange">
   </div>
 </template>
 
@@ -66,7 +67,12 @@ export default {
       this.$emit('sub')
     },
     inputIt(val) {
+      // el-input 接收到的直接就是值不是event
       this.$emit('inputChange', val)
+    },
+    inputOrange(e) {
+    // 原生input拿到的是event
+      console.log(e.target.value)
     }
   }
 }

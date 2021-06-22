@@ -3,7 +3,7 @@
     <div class="father">
       Father
       <!-- 驼峰变量  传props的时候需要转为 - 连字符形式 -->
-      <child1 :msg="msg" :my-msg="myMsg" />
+      <child1 ref="child1" :msg="msg" :my-msg="myMsg" />
       <child2 :obj="obj" :arr="arr" :num="num" :input-val="inputVal" @sub="sub" @add="add" @inputChange="inputChange" />
       <el-input :value="inputVal" @input="inputChange" />
     </div>
@@ -31,6 +31,19 @@ export default {
   created() {
 
   },
+  mounted() {
+    /* 1.  $children可以拿到所有的子组件，以数组的方式
+       * 包含了子组件里的方法
+       * this.$children[0]拿到第一个子组件
+       * 不常用
+       */
+    // console.log(this.$children, '$children')
+
+    /* 2. $refs   默认是空对象
+     *  手动给子组件加上ref属性
+     */
+    console.log(this.$refs, '$refs')
+  },
   methods: {
     add(val) {
       // 接收$emit发送的参数
@@ -50,7 +63,7 @@ export default {
 <style scoped lang="scss">
 .father{
     width: 100%;
-    height: 500px;
+    height: 400px;
     background-color: #ccc;
     padding: 20px;
     display: inline-block;
