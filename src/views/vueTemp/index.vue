@@ -70,6 +70,34 @@
         <div v-for="(val,key,index) in obj" :key="key">
           {{ val+ '---' + key + '---' + index }}
         </div>
+        <el-button type="primary" @click="dialogFormVisible = true;isChange=false;">
+          watch的用法
+        </el-button>
+
+        <el-dialog title="信息" :visible.sync="dialogFormVisible" :close-on-click-modal="false">
+          <el-form :model="formData">
+            <el-form-item label="名字" :label-width="formLabelWidth">
+              <el-input v-model="formData.name" autocomplete="off" />
+            </el-form-item>
+            <el-form-item label="email" :label-width="formLabelWidth">
+              <el-input v-model="formData.email" autocomplete="off" />
+            </el-form-item>
+            <!-- <el-form-item label="活动区域" :label-width="formLabelWidth">
+              <el-select v-model="formData.region" placeholder="请选择活动区域">
+                <el-option label="区域一" value="shanghai" />
+                <el-option label="区域二" value="beijing" />
+              </el-select>
+            </el-form-item> -->
+          </el-form>
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="confirm">
+              取 消
+            </el-button>
+            <el-button type="primary" @click="confirm">
+              确 定
+            </el-button>
+          </div>
+        </el-dialog>
       </el-col>
       <el-col :span="8">
         1
@@ -81,6 +109,7 @@
 
 <script>
 import Vue from 'vue'
+import _ from 'lodash'
 export default {
   // NOTE Vue中为什么data必须是函数？
 // 1. 一个组件的 data 选项必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝，如果是对象的话，会导致所有的组件维护同一个data，一个组件状态改变会导致另外组件也改变。
@@ -110,10 +139,21 @@ data(){   // 对象中函数的简单写法
       list: ['类', '名', '绑', '定'],
       tabIndex: 0,
       value: 10,
+      formLabelWidth: '100px',
       obj: {
         name: 'wang',
         age: 19,
         sex: 'male'
+      },
+      isChange: false,
+      dialogFormVisible: false,
+      formData: {
+        name: 'xxx',
+        email: 'xxx@email.com',
+        obj: {
+          key1: 'key1',
+          key2: 'key2'
+        }
       }
     }
   },
@@ -139,6 +179,27 @@ data(){   // 对象中函数的简单写法
       }
     }
   },
+  watch: {
+    // 监听普通的属性   可以取到ewVal, oldVal
+    tabIndex: function(newVal, oldVal) {
+      console.log('监听到tabIndex改变了，变为' + newVal)
+    },
+    // 监听复杂数据  只能取到newVal
+    // 监听复杂属性的子属性  用'formData.name'  引号括起来
+    formData: {
+      handler(newVal, oldVal) { // 监听不到旧的值了
+        this.isChange = true
+      },
+      deep: true // 深度监听，可监听到对象、数组的变化
+    }
+    // 实现监听表单的思路：
+    /*
+    1. 获取到表单数据后立即深拷贝一份
+    2. 监听到变化以后，打个标记
+    3. 关闭之前，如果有标记，利用 _.isEqual来判断是否完全相等。相等则将标记置false
+    4. 若有标记，则confirm提示
+    */
+  },
   beforeCreate() {
     console.log('beforeCreate调用了')
   },
@@ -146,9 +207,34 @@ data(){   // 对象中函数的简单写法
     console.log('created调用了')
   },
   mounted() {
-    console.log('mounted调用了')
+    const obj = {
+      name: 'xxx',
+      email: 'xxx@email.com',
+      obj: {
+        key1: 'key1',
+        key2: 'key2'
+      }
+    }
+    // isEqual 能够深度比较是否相等
+    const res = _.isEqual(this.formData, obj)
+    console.log('mounted调用了', 'isEqual的使用' + res)
   },
   methods: {
+    confirm() {
+      if (this.isChange) {
+        this.$confirm('数据改变了，确定要取消？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.dialogFormVisible = false
+        }).catch(() => {
+          // 点击取消的时候
+        })
+      } else {
+        this.dialogFormVisible = false
+      }
+    },
     changeVal() {
       // 修改计算属性的值
       this.currentValue = 100
