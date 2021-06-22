@@ -100,7 +100,8 @@
         </el-dialog>
       </el-col>
       <el-col :span="8">
-        1
+        <el-alert type="success" title="父子组件之间的通信" :closable="false" center />
+        <Father />
       </el-col>
     </el-row>
     <el-row />
@@ -110,6 +111,7 @@
 <script>
 import Vue from 'vue'
 import _ from 'lodash'
+import Father from './communication/Father'
 export default {
   // NOTE Vue中为什么data必须是函数？
 // 1. 一个组件的 data 选项必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝，如果是对象的话，会导致所有的组件维护同一个data，一个组件状态改变会导致另外组件也改变。
@@ -132,7 +134,7 @@ data(){   // 对象中函数的简单写法
     }
 }
 */
-
+  components: { Father },
   data() {
     return {
       arr1: ['1', 2, { name: 1 }, null],
