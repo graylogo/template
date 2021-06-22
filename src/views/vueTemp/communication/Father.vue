@@ -4,7 +4,8 @@
       Father
       <!-- 驼峰变量  传props的时候需要转为 - 连字符形式 -->
       <child1 :msg="msg" :my-msg="myMsg" />
-      <child2 :obj="obj" :arr="arr" />
+      <child2 :obj="obj" :arr="arr" :num="num" :input-val="inputVal" @sub="sub" @add="add" @inputChange="inputChange" />
+      <el-input :value="inputVal" @input="inputChange" />
     </div>
   </div>
 </template>
@@ -22,14 +23,26 @@ export default {
         name: 'name',
         age: 18
       },
-      arr: [1, 2, 3]
+      arr: [1, 2, 3],
+      num: 0,
+      inputVal: '父组件和子组件公用一个input'
     }
   },
   created() {
 
   },
   methods: {
-
+    add(val) {
+      // 接收$emit发送的参数
+      this.num += val
+    },
+    sub() {
+      this.num--
+    },
+    inputChange(val) {
+      console.log(val)
+      this.inputVal = val
+    }
   }
 }
 </script>
