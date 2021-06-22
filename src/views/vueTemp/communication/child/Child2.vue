@@ -61,6 +61,8 @@ export default {
   mounted() {
     // console.log(this.props, 'props')
     // console.log(this.obj)
+
+    console.log(this.$parent, '$parent')
   },
   methods: {
     sub() {

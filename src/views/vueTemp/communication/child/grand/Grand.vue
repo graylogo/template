@@ -14,6 +14,14 @@ export default {
   created() {
 
   },
+  mounted() {
+    // $parent 可以拿到  父组件-VueComponent
+    // 不常用
+    console.log(this.$parent, '孙子的$parent')
+
+    // 访问根组件
+    console.log(this.$root, '$root访问根组件')
+  },
   methods: {
 
   }
