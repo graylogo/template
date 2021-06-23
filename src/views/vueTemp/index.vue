@@ -73,7 +73,6 @@
         <el-button type="primary" @click="dialogFormVisible = true;isChange=false;">
           watch的用法
         </el-button>
-
         <el-dialog title="信息" :visible.sync="dialogFormVisible" :close-on-click-modal="false">
           <el-form :model="formData">
             <el-form-item label="名字" :label-width="formLabelWidth">
@@ -106,13 +105,14 @@
     </el-row>
     <el-row>
       <el-col :span="8">
-        1
+        <el-alert type="success" title="插槽slot" :closable="false" center />
+        <Slots />
       </el-col>
       <el-col :span="8">
-        2
+        <el-alert type="success" title="xxx" :closable="false" center />
       </el-col>
       <el-col :span="8">
-        3
+        <el-alert type="success" title="xxx" :closable="false" center />
       </el-col>
     </el-row>
   </div>
@@ -122,6 +122,7 @@
 import Vue from 'vue'
 import _ from 'lodash'
 import Father from './communication/Father'
+import Slots from './slot'
 export default {
   // NOTE Vue中为什么data必须是函数？
 // 1. 一个组件的 data 选项必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝，如果是对象的话，会导致所有的组件维护同一个data，一个组件状态改变会导致另外组件也改变。
@@ -144,7 +145,7 @@ data(){   // 对象中函数的简单写法
     }
 }
 */
-  components: { Father },
+  components: { Father, Slots },
   data() {
     return {
       arr1: ['1', 2, { name: 1 }, null],
