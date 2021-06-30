@@ -110,6 +110,7 @@
       </el-col>
       <el-col :span="8">
         <el-alert type="success" title="xxx" :closable="false" center />
+        1
       </el-col>
       <el-col :span="8">
         <el-alert type="success" title="xxx" :closable="false" center />

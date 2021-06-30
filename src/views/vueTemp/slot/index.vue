@@ -23,6 +23,7 @@
             <!-- 父组件替换子组件的标签，但是内容是由子组件提供的 -->
             <!-- 传递数据的插槽 从子上传递过来的值 -->
             <template v-slot:header="scope">
+              <!-- 另外一种写法  #header="{user}"  直接解构出子组件的slot中的user-->
               {{ scope }}
               <h1>具名插槽</h1>
             </template>
@@ -86,10 +87,10 @@ export default {
   }
   .father-content{
       background-color: rgb(196, 117, 117);
-      height: 100px;
+      height: 120px;
   }
   .grid-content {
-      height: 60px;
+      height: 90px;
     border-radius: 4px;
   }
   .row-bg {

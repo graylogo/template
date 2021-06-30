@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>property</title>
+</head>
+<body>
+    <input id="input" value="test value"><button id="btn">获取值</button>
+    <div class="content">
+    </div>
+    <div class="div2"></div>
+    <pre>
+        attribute 和 property 的概念
+        简单的说，attribute 是元素标签的属性，property 是元素对象的属性
+        1. input 的 value attribute 是通过标签里的 value=“test value” 定义的，可以通过input.getAttribute(‘value’) 获取，可以通过 input.setAttribute(‘value’, ‘New Value’) 更新
+        2. input 的 value property 可通过 input.value 获取和更新，初始值是与 attribute 中的赋值一致的
+
+        attribute 和 property 的绑定
+
+        如果在最开始的时候，更新 attribute value 的值，property 的值也会随之改变
+        但是更新 property value 的值（在文本框输入或给 input.value 赋新值 ），attribute 的值不会随之改变，而且此时再更新 attribute 的值，property 的值也不再随之改变，如此动画所示，也可访问此页面尝试进行操作
+        这其实是脏值标记（dirty value flag）在起作用，dirty value flag 的初始值为 false，即 attribute value 的更新默认会改变对应的 property value，但是一旦用户交互修改了 property value，dirty value flag 的值就变为 true，即attribute value 的更新就不会改变对应的 property value 了
+
+        所以在实际项目中，我们一般都是在处理作为 property 的 value
+    </pre>
+</body>
+<script>
+    let btn = document.getElementById('btn')
+    btn.addEventListener('click',getData)
+    function getData(){
+    let input = document.getElementById('input');
+    let div = document.getElementsByClassName('content')[0]
+    let div2 = document.getElementsByClassName('div2')[0]
+    div.innerHTML = (input.getAttribute('value')+' attribute')
+    div2.innerHTML = (input.value + ' property')
+    console.log(input.getAttribute('value'),'attribute'); // test value
+    console.log(input.value,' property'); // test value
+    }
+
+</script>
+</html>
