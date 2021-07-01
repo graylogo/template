@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入口函数和核心函数$()</title>
+    <style>
+        div{
+            height: 200px;
+            width: 200px;
+            border: 1px solid #e0e0e0;
+        }
+    </style>
+    <!-- 入口函数和核心函数$() -->
+    <script src="../jq/jquery-1.12.4.js"></script>
+    <script>
+        // 原生
+        var div1 = document.getElementsByTagName('div')[0]   // 直接拿拿不到
+        console.log(div1,'1');// undefined
+
+        window.onload = function(){
+            let div1 = document.getElementsByTagName('div')[0]   // 当标签在上面的时候，需要写在window.onload 这个函数里
+        console.log(div1,'2');// undefined
+        }
+
+        // 自定义访问符号  （解决$冲突）
+        // var xxx = jQuery.noConflict()
+
+        // 使用JQuery  固定写法
+        $(document).ready(function(){    //入口函数
+           console.log($('div')[0],'3')
+        })
+
+        /*  原生window.onload  和  jQuery  ready的区别
+            1. 原生会等待DOM加载完毕，远程图片也家在完毕后执行； 但是JQuery是在DOM元素加载完后就执行（拿不到网络图片的宽高）
+            2. 写多个入口函数   原生后写的会覆盖前写的   jq入口函数都会执行
+        */
+
+        // jq入口函数简单写法
+        $(function(){
+            console.log('简单写法');
+        })
+
+        $(function(){
+        // 核心函数 $()
+        // 1. 接收一个函数（入口函数）
+                // $(function(){
+                //     console.log('init');
+                // })
+        // 2. 接收一个字符串（选择器）
+        const $demo = $('.demo')
+        console.log($demo,'5');  // 获取到一个Jq对象
+        // 3. 接收一个字符串代码片段
+        const $p = $('<p>a</p>')
+        console.log($p,'6'); // 返回一个包装好的jq元素
+        $demo.append($p)
+        // 4. 接收一个DOM元素
+        const dom1 = document.getElementById('one')  //获取dom元素
+        console.log(dom1,'7');  //输出一个dom元素
+        const $dom1 = $(dom1)
+        console.log($dom1,'8');  // 输出一个包装好的jq对象
+    })
+        // 什么是JQuery对象？
+        // 1. jq对象是伪数组（有length属性和0到length-1的属性）
+
+    </script>
+</head>
+<body>
+    <div></div>
+    <div class="demo"></div>
+    <div id="one"></div>
+</body>
+<script>
+    const d = document.getElementsByTagName('div')[0]
+    console.log(d,'4')   //拿到一个普通对象
+</script>
+</html>

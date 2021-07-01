@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- each  map -->
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+    <script src="../jq/jquery-1.12.4.js"></script>
+    <script>
+        $.holdReady(true)
+        $(function(){
+            let arr = [1,'a',3,4]
+            let obj = {0:1,1:2,length:2}  // 伪数组
+            //  1. each方法   返回值：遍历谁就返回谁
+                //原生的forEach方法
+            arr.forEach((val,index)=>{console.log(val,index,'0');})
+                // 不能遍历伪数组
+            // obj.forEach((val,index)=>{console.log(val);})  // 报错
+                // JQ的each静态方法
+                // 注意： 第一个参数index  第二个参数val
+            $.each(arr,(index,val)=>{console.log(val,index,'1');})
+            // each遍历伪数组
+            $.each(obj,(index,val)=>{console.log(val,index,'3');})
+
+            // 2. map方法   返回值：默认为[] 可以return组成新数组
+                //原生map方法   array表示当前被遍历的数组
+            arr.map((val,index,array)=>{console.log(val,index,array,'4');})
+                // 原生map方法不能遍历伪数组
+            // jq的map方法
+            $.map(arr,(val,index,a)=>{console.log(val,index,a,'5');})
+            $.map(obj,(val,index)=>{console.log(val,index,'6');}) // 乐意遍历伪数组
+            console.log($.isWindow(window));  // isWindow方法
+        })
+    </script>
+</head>
+<body>
+    <div></div>
+    <div class="jq"></div>
+    <div id='one'></div>
+    <button id='btn'>解开holdReady</button>
+</body>
+<script>
+    // const btn = document.getElementById('btn')
+    // btn.onclick = function(){
+    //     $.holdReady(false)
+    // }
+
+    // setTimeout(()=>{
+    //     $.holdReady(false)
+    // },2000)
+</script>
+</html>
