@@ -4,7 +4,7 @@
 - node搭建简单服务器
 - Vuex
 - vue-router
-- 
+- Git的使用 
 
 
 
